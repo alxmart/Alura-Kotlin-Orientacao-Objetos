@@ -1,16 +1,19 @@
 fun testaCondicoes(saldo: Double) {
 
-//    if (saldo > 0.0) {
-//        println("Conta é positiva.")
-//    } else if (saldo == 0.0) {
-//        println("Conta é neutra.")
+//    if (saldo > 0 ) {
+//        println("A conta é positiva.")
+//    } else if (saldo == 0.0 ) {
+//        println("A conta é neutra.")
 //    } else {
-//        println("Saldo é negativa.")
+//        println("A conta é negativa.")
 //    }
 
     when {
-        saldo > 0.0 -> println("Conta é positiva.")
-        saldo == 0.0 -> println("Conta é neutra.")
-        else -> println("Conta é negativa.")
+        saldo > 0 -> println("A conta é positiva.")
+        saldo == 0.0 -> println("A conta é neutra.")
+        else -> println("A conta é negativa.")
     }
+
 }
+
+
