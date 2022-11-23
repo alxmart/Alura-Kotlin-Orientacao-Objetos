@@ -1,23 +1,39 @@
 fun main() {
     println("Bem vindo(a) ao Bytebank.")
-    val titular: String = "Alex"
-    val numeroConta: Int = 1000
-    var saldo: Double = 0.0
-    saldo -= 1000
+    var i = 0
 
-//    saldo = 100 + 2.0
-//    saldo += 200
+    while (i < 5) {
 
-    println("Titular: $titular")
-    println("Número da Conta: $numeroConta")
-    println("Saldo da Conta: $saldo")
+        val titular: String = "Alex $i"
+        val numeroConta: Int = 1000 + i
+        var saldo: Double = i + 10.0
 
-   // testaCondicoes(saldo)
+        println("Titular: $titular")
+        println("Número da Conta: $numeroConta")
+        println("Saldo da Conta: $saldo")
+        println()
 
+        i++
 
+    }
 
+//    for (i in 5 downTo 1 /*step 2*/ ) {
+//
+//        if (i == 4) {
+//            /*break*/ continue
+//        }
+//
+//        val titular: String = "Alex $i"
+//        val numeroConta: Int = 1000 + i
+//        var saldo: Double = i + 10.0
+//
+//        println("Titular: $titular")
+//        println("Número da Conta: $numeroConta")
+//        println("Saldo da Conta: $saldo")
+//        println()
 
-
+    // testaCondicoes(saldo)
 
 
 }
+
