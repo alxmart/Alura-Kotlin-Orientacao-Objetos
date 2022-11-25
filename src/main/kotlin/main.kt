@@ -12,21 +12,32 @@ fun main() {
     contaFran.numero = 1001
     contaFran.saldo = 300.0
 
+    println(contaFran.titular)
+    println(contaFran.numero)
+    println(contaFran.saldo)
+    println()
 
     println(contaAlex.titular)
     println(contaAlex.numero)
     println(contaAlex.saldo)
-    println()
 
-    println(contaFran.titular)
-    println(contaFran.numero)
-    println(contaFran.saldo)
+    println("Depositando na conta do Alex")
+    deposita(contaAlex, 50.0)
+    println("Saldo do Alex: ${contaAlex.saldo}")
 
-
-
-
+    println("Depositando na conta da Fran")
+    deposita(contaFran, 70.0)
+    println("Saldo da Fran: ${contaFran.saldo}")
 
 }
+
+fun deposita(conta: Conta, valor: Double) {
+    conta.saldo += valor
+
+}
+
+
+
 
 class Conta {
     var titular = ""
