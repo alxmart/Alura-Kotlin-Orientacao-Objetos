@@ -1,32 +1,30 @@
+
+// ALURA - KOTLIN - ORIENTAÇÂO A OBJETOS
+
 fun main() {
     println("Bem vindo(a) ao Bytebank.")
     println()
 
-    val contaAlex = Conta()
-    contaAlex.titular = "Alex"
-    contaAlex.numero = 1000
+    val contaAlex = Conta(titular = "Alex", numero =  1000)
     contaAlex.deposita(200.0)
 
-    val contaFran = Conta()
-    contaFran.titular = "Fran"
-    contaFran.numero = 1001
+    val contaFran = Conta(numero = 1001 , titular = "Fran")
     contaFran.deposita(300.0)
 
-    println(contaFran.titular)
-    println(contaFran.numero)
-    println(contaFran.saldo)
-    println()
+    println("Titular: ${contaFran.titular}")
+    println("Número da Conta: ${contaFran.numero}")
+    println("Saldo Conta Fran: ${contaFran.saldo}")
 
-    println(contaAlex.titular)
-    println(contaAlex.numero)
-    println(contaAlex.saldo)
+    println("Titular: ${contaAlex.titular}")
+    println("Número da Conta: ${contaAlex.numero}")
+    println("Saldo Conta Alex: ${contaAlex.saldo}")
 
     println("Depositando na conta do Alex")
-    contaAlex.deposita( 50.0)
+    contaAlex.deposita(50.0)
     println("Saldo do Alex: ${contaAlex.saldo}")
 
     println("Depositando na conta da Fran")
-    contaFran.deposita( 70.0)
+    contaFran.deposita(70.0)
     println("Saldo da Fran: ${contaFran.saldo}")
 
     println("Sacando na conta do Alex")
@@ -39,57 +37,55 @@ fun main() {
 
     println("Saque em excesso na conta do Alex")
     contaAlex.saca(100.0)
-    println(contaAlex.saldo)
+    println("Saldo atual: ${contaAlex.saldo}")
 
     println("Saque em excesso na conta da Fran")
-    contaAlex.saca(500.0)
-    println(contaAlex.saldo)
+    contaFran.saca(500.0)
+    println("Saldo atual: ${contaFran.saldo}")
 
     println("Transferências da conta da Fran para o Alex")
-    if (contaFran.transfere(300.0, contaAlex)) {
+
+    if (contaFran.transfere(valor = 300.0, destino = contaAlex)) {
         println("Transferência efetuada")
     } else {
         println("Falha na TRansferência")
     }
 
-    println(contaAlex.saldo)
-    println(contaFran.saldo)
+    println("Saldo Conta do Alex: ${contaAlex.saldo}")
+    println("Saldo Conta da Fran: ${contaFran.saldo}")
 }
 
-class Conta {
-    var titular = ""
-    var numero = 0
+class Conta(
+    val titular: String,
+    val numero: Int
+
+    //val teste: Int = 3 // Opcional
+) {
     var saldo = 0.0
-        private set(valor) {
-            if (valor > 0) {
-                field = valor
-            }
+        private set
+
+    fun deposita(valor: Double) {
+        if (valor > 0) {
+            this.saldo += valor
         }
-            // get() {return field}  (Já está implementado, pode remover.)
+    }
 
-            fun deposita(valor: Double) {
-                this.saldo += valor
-            }
+    fun saca(valor: Double) {
+        if (this.saldo >= valor) {
+            this.saldo -= valor
+        } else {
+            println("Saque não realizado - Valor Insuficiente")
+        }
+    }
 
-            fun saca(valor: Double) {
-                if (this.saldo >= valor) {
-                    this.saldo -= valor
-                } else {
-                    println("Saque não realizado - Valor Insuficiente")
-                }
-            }
-
-            fun transfere(valor: Double, destino: Conta): Boolean {
-                if (saldo >= valor) {
-                    saldo -= valor
-                    //destino.saldo += valor
-                    destino.deposita(valor)
-                    return true
-                }
-                return false
-            }
+    fun transfere(valor: Double, destino: Conta): Boolean {
+        if (saldo >= valor) {
+            saldo -= valor
+            //destino.saldo += valor
+            destino.deposita(valor)
+            return true
+        }
+        return false
+    }
 
 }
-
-
-
